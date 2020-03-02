@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TOP</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <style>
+  html,
+body {
+  overflow-x: hidden; /* 狭いデバイスでのスクロールを防止 */
+}
+
+body {
+  padding-top: 56px;
+}
+
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 56px; /* ナビバーの高さ */
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    background-color: #343a40;
+    transition: visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
+  }
+  .offcanvas-collapse.open {
+    visibility: visible;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  color: rgba(255, 255, 255, .75);
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-underline .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
+  color: #6c757d;
+}
+
+.nav-underline .nav-link:hover {
+  color: #007bff;
+}
+
+.nav-underline .active {
+  font-weight: 500;
+  color: #343a40;
+}
+
+.text-white-50 { color: rgba(255, 255, 255, .5); }
+
+.bg-purple { background-color: #6f42c1; }
+
+.lh-100 { line-height: 1; }
+.lh-125 { line-height: 1.25; }
+.lh-150 { line-height: 1.5; }S
+  </style>
+
+</head>
+
+<body class="bg-light">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand mr-auto mr-lg-0" href="#">TOP</a>
+    <p th:text="${user_id}"></p>
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">ダッシュボード <span class="sr-only">(現位置)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">必要書類</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <a class="dropdown-item" href="kintai.html">勤怠管理</a>
+            <a class="dropdown-item" href="zangyo.html">残業実績</a>
+            <a class="dropdown-item" href="syuho.html">週報</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">マイページ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ログアウト</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main role="main" class="container">
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+      <img class="mr-3" src="../images/bootstrap-outline.svg" alt="" width="48" height="48">
+      <div class="lh-100">
+        <h6 class="mb-0 text-white lh-100">タイトル</h6>
+        <small>小タイトル</small>
+      </div>
+    </div>
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <h6 class="border-bottom border-gray pb-2 mb-0">最近のアップデート</h6>
+      <div class="media text-muted pt-3">
+        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#007bff" width="100%" height="100%" /><text fill="#007bff" dy=".3em" x="50%" y="50%">32x32</text></svg>
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <strong class="d-block text-gray-dark">@村井俊介</strong>
+          体調を崩したので本日お休みします
+        </p>
+      </div>
+      <div class="media text-muted pt-3">
+        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#e83e8c" width="100%" height="100%" /><text fill="#e83e8c" dy=".3em" x="50%" y="50%">32x32</text></svg>
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <strong class="d-block text-gray-dark">@小林逸人</strong>
+          ガンダム
+      </div>
+      <div class="media text-muted pt-3">
+        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#6f42c1" width="100%" height="100%" /><text fill="#6f42c1" dy=".3em" x="50%" y="50%">32x32</text></svg>
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <strong class="d-block text-gray-dark">@嶋田純一</strong>
+          今日は給料日ですよ
+      </div>
+      <small class="d-block text-right mt-3">
+        <a href="#">すべてを表示</a>
+      </small>
+    </div>
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <h6 class="border-bottom border-gray pb-2 mb-0">提案</h6>
+      <div class="media text-muted pt-3">
+        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#007bff" width="100%" height="100%" /><text fill="#007bff" dy=".3em" x="50%" y="50%">32x32</text></svg>
+        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <strong class="text-gray-dark">フルネーム</strong>
+            <a href="#">フォロー</a>
+          </div>
+          <span class="d-block">@ユーザー名</span>
+        </div>
+      </div>
+      <div class="media text-muted pt-3">
+        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#007bff" width="100%" height="100%" /><text fill="#007bff" dy=".3em" x="50%" y="50%">32x32</text></svg>
+        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <strong class="text-gray-dark">フルネーム</strong>
+            <a href="#">フォロー</a>
+          </div>
+          <span class="d-block">@ユーザー名</span>
+        </div>
+      </div>
+      <div class="media text-muted pt-3">
+        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#007bff" width="100%" height="100%" /><text fill="#007bff" dy=".3em" x="50%" y="50%">32x32</text></svg>
+        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <strong class="text-gray-dark">フルネーム</strong>
+            <a href="#">フォロー</a>
+          </div>
+          <span class="d-block">@ユーザー名</span>
+        </div>
+      </div>
+      <small class="d-block text-right mt-3">
+        <a href="#">すべてを表示</a>
+      </small>
+    </div>
+  </main>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+  <script>
+  $(function () {
+    'use strict'
+
+    $('[data-toggle="offcanvas"]').on('click', function () {
+      $('.offcanvas-collapse').toggleClass('open')
+    })
+  })
+  </script>
+</body>
+
+</html>
