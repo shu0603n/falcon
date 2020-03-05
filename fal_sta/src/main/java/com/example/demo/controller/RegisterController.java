@@ -34,11 +34,10 @@ public class RegisterController {
      */
     @Autowired
     HttpSession session;
-    //本当はPOST↓　HTMLではAタグじゃなくFORMで書く
-	@RequestMapping(value = "/Register/Done", method = RequestMethod.GET)
-    public String registerDone(Model model,@ModelAttribute User user) {
 
-		Shuho shuho = new Shuho();
+	@RequestMapping(value = "/Register/Done", method = RequestMethod.POST)
+    public String registerDone(Model model,@ModelAttribute Shuho shuho) {
+
 		//週報のデータを入れる
 		shuho.setUserId("hoge");
 		shuho.setUserId("hoge");
