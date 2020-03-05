@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>新規登録</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <style>
+  html,
+body {
+  overflow-x: hidden; /* 狭いデバイスでのスクロールを防止 */
+}
+
+body {
+  padding-top: 56px;
+}
+
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 56px; /* ナビバーの高さ */
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    background-color: #343a40;
+    transition: visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
+  }
+  .offcanvas-collapse.open {
+    visibility: visible;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  color: rgba(255, 255, 255, .75);
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-underline .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
+  color: #6c757d;
+}
+
+.nav-underline .nav-link:hover {
+  color: #007bff;
+}
+
+.nav-underline .active {
+  font-weight: 500;
+  color: #343a40;
+}
+
+.text-white-50 { color: rgba(255, 255, 255, .5); }
+
+.bg-purple { background-color: #6f42c1; }
+
+.lh-100 { line-height: 1; }
+.lh-125 { line-height: 1.25; }
+.lh-150 { line-height: 1.5; }
+p a {
+  color: gray;
+  text-decoration: none;
+}
+</style>
+</head>
+
+<body class="bg-light">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand mr-auto mr-lg-0" href="top.html">TOP</a>
+    <p th:text="${user_id}"></p>
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <!--<li class="nav-item active">
+          <a class="nav-link" href="#">ダッシュボード <span class="sr-only">(現位置)</span></a>
+        </li>-->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">マイページ</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <a class="dropdown-item" href="insert.html">新規登録</a>
+            <a class="dropdown-item" href="list.html">修正削除</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">週報一覧</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <a class="dropdown-item" href="list_week.html">日付別</a>
+            <a class="dropdown-item" href="list_name.html">名前別</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">ログアウト</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+        <main role="main" class="col-md-10 offset-md-1 col-lg-10 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <div class="container">
+              <div class="row">
+                <a class="col-12 h2" style="white-space:nowrap;">週間報告書</h1>
+                <a class="col-12 h5" style="white-space:nowrap;">2020年 2月25日～2月28日</h1>
+              </div>
+            </div>
+            <!--<div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-2">
+                <button type="button" class="btn btn-sm btn-outline-secondary">シェア</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">輸出</button>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                <span data-feather="calendar"></span>
+                今週
+              </button>
+            </div>-->
+          </div>
+
+          <div class="form-group">
+            <div>
+              <label for="textarea1">今週作業実績</label>
+              <textarea id="textarea1" rows="5" class="form-control" readonly>
+・今週作業内容１
+・今週作業内容２
+・今週作業内容３
+              </textarea>
+            </div>
+            <br>
+            <div>
+              <label for="textarea1">問題点</label>
+              <textarea id="textarea1" rows="5" class="form-control" readonly>
+・問題点１
+・問題点２
+              </textarea>
+            </div>
+            <br>
+            <div>
+              <label for="textarea1">連絡事項・業務外活動・その他</label>
+              <textarea id="textarea1" rows="5" class="form-control" readonly>
+・連絡事項１
+・連絡事項２
+              </textarea>
+            </div>
+            <br>
+            <div>
+              <label for="textarea1">次週作業予定</label>
+              <textarea id="textarea1" rows="5" class="form-control" readonly>
+・次週作業予定１
+・次週作業予定２
+              </textarea>
+            </div>
+            <br>
+            <div>
+              <label for="textarea1">所感</label>
+              <textarea id="textarea1" rows="5" class="form-control" readonly>
+ここに所感を入力していただきたく思いますです。
+              </textarea>
+            </div>
+          </div><!-- /.table-responsive -->
+        </main>
+      </div>
+    </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+  <!-- アイコン -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+  <script>
+    feather.replace()
+  </script>
+  <script>
+  $(function () {
+    'use strict'
+
+    $('[data-toggle="offcanvas"]').on('click', function () {
+      $('.offcanvas-collapse').toggleClass('open')
+    })
+  })
+  </script>
+
+  <!-- グラフ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+  <script>
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+      labels: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        datasets: [{
+          data: [0, 8.5, 8, 8, 8, 10, 0],
+          lineTension: 0,
+          backgroundColor: 'transparent',
+          borderColor: '#007bff',
+          borderWidth: 4,
+          pointBackgroundColor: '#007bff'
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: false
+            }
+          }]
+        },
+        legend: {
+          display: false,
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>
