@@ -16,8 +16,8 @@
         </thead>
         <tbody>
             <tr th:each="user : ${userlist}" th:object="${user}">
-                <td class="center" th:text="*{id}"></td>
-                <td th:text="*{name}"></td>
+                <td class="center" th:text="*{userId}"></td>
+                <td th:text="*{password}"></td>
             </tr>
         </tbody>
     </table>
