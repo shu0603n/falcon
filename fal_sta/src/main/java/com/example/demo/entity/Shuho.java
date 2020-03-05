@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="user")
-public class User {
+public class Shuho {
 
 
 	/**
@@ -33,13 +33,13 @@ public class User {
 	private String password;
 
 	/**
-	 * 社員番号
+	 * パスワード
 	 */
 	@Column(name="epmNo")
 	private Integer empNo;
 	
 	/**
-	 * 社員名
+	 * パスワード
 	 */
 	@Column(name="empName")
 	private String empName;
