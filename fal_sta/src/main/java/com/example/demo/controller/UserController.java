@@ -7,7 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.demo.entity.User;
-import com.example.demo.service.UserService;
+import com.example.demo.repository.UserRepository;
+
 
 /**
  * ユーザー情報 Controller
@@ -15,11 +16,11 @@ import com.example.demo.service.UserService;
 @Controller
 public class UserController {
 
-    /**
-     * ユーザー情報 Service
+	/**
+     * ユーザー情報 Repository
      */
     @Autowired
-    UserService userService;
+    UserRepository userRepository;
 
     /**
      * ユーザー情報一覧画面を表示
@@ -28,7 +29,7 @@ public class UserController {
      */
     @RequestMapping(value = "/user/list", method = RequestMethod.GET)
     public String displayList(Model model) {
-        List<User> userlist = userService.searchAll();
+        List<User> userlist = userRepository.findAll();
         model.addAttribute("userlist", userlist);
         return "user/list";
     }

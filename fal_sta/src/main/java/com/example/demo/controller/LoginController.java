@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.User;
-import com.example.demo.service.UserService;
+import com.example.demo.repository.UserRepository;
+
 
 
 @Controller
@@ -24,10 +25,10 @@ public class LoginController {
     }
     
     /**
-     * ユーザー情報 Service
+     * ユーザー情報 Repository
      */
     @Autowired
-    UserService userService;
+    UserRepository userRepository;
     
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String loginPost(Model model,@ModelAttribute User user) {
@@ -37,7 +38,7 @@ public class LoginController {
 
     	if("1111".equals(user.getPassword())) {
 //    		DBの名前変えてから！
-//    		List<User> userlist = userService.searchAll();
+//    		List<User> userlist = userRepository.findAll();
 //            model.addAttribute("userlist", userlist);
     		return "html/top";
     	} else {
