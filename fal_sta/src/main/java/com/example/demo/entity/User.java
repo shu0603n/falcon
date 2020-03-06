@@ -30,12 +30,6 @@ public class User {
 	 */
 	@Column(name="password")
 	private String password;
-	
-	/**
-	 * 社員名
-	 */
-	@Column(name="empName")
-	private String empName;
 
 	/**
 	 * 社員番号
@@ -66,8 +60,6 @@ public class User {
 		this.password = password;
 	}
 	
-<<<<<<< HEAD
-=======
 	public Integer getEmpNo() {
 		return empNo;
 	}
@@ -76,7 +68,6 @@ public class User {
 		this.empNo = empNo;
 	}
 	
->>>>>>> branch 'master' of https://github.com/shu0603n/falcon.git
 	public String getEmpName() {
 		return empName;
 	}
