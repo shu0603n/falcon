@@ -57,7 +57,7 @@ public class RegisterController {
 		model.addAttribute("taishoWeek", taisyo.replace("-", "/"));
 		model.addAttribute("postedDay", toDay);
 		
-        return "html/insert";
+        return "html/myPage/insert";
     }
 	
 	/**
@@ -71,7 +71,9 @@ public class RegisterController {
 
 		//週報のデータを入れる
 //		shuho.setShuhoId(0);
-		shuho.setUserId(session.getAttribute("loginId").toString());
+		User user = new User();
+		user.setUserId(session.getAttribute("loginId").toString());
+		shuho.setUser(user);
 
 		System.out.println(shuho.getTaishoWeek());
 		try {
@@ -81,6 +83,6 @@ public class RegisterController {
 			return "html/insert";
 		}
 		model.addAttribute("msg","登録が完了しました。");
-        return "html/done";
+        return "html/myPage/done";
     }
 }

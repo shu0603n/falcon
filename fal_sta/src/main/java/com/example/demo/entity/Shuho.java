@@ -3,11 +3,15 @@ package com.example.demo.entity;
 
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -25,12 +29,6 @@ public class Shuho {
     @Column(name="shuhoId")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer shuhoId;
-	
-	/**
-    * ユーザーID
-    */
-    @Column(name="userId")
-	private String userId;
 
 	/**
 	 * 対象週
@@ -74,6 +72,15 @@ public class Shuho {
 	@Column(name="impression")
 	private String impression;
 	
+	/**
+	 * ユーザーID Entity
+	 */
+	@ManyToOne
+	@JoinColumn(name = "userId",referencedColumnName="userId")
+    private User user;
+	
+	
+	
 	public Integer getShuhoId() {
 		return shuhoId;
 	}
@@ -82,14 +89,7 @@ public class Shuho {
 		this.shuhoId = shuhoId;
 	}
 	
-	public String getUserId() {
-		return userId;
-	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	
 	public String getTaishoWeek () {
 		return taishoWeek ;
 	}
@@ -144,5 +144,13 @@ public class Shuho {
 
 	public void setImpression(String impression) {
 		this.impression = impression;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }
