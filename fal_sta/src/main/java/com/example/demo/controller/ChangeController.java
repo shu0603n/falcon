@@ -18,13 +18,13 @@ public class ChangeController {
     public String change(Model model) {
 		Shuho shuho = new Shuho();
 		//表示するデータをセット
-		shuho.setUserId("aaaa");
-		shuho.setUserId("aaaa");
-		shuho.setUserId("aaaa");
-		shuho.setUserId("aaaa");
-		shuho.setUserId("aaaa");
-		shuho.setUserId("aaaa");
-		shuho.setUserId("aaaa");
+//		shuho.setUserId("aaaa");
+//		shuho.setUserId("aaaa");
+//		shuho.setUserId("aaaa");
+//		shuho.setUserId("aaaa");
+//		shuho.setUserId("aaaa");
+//		shuho.setUserId("aaaa");
+//		shuho.setUserId("aaaa");
 		
         model.addAttribute("shuho", shuho);
 
@@ -37,26 +37,21 @@ public class ChangeController {
     @Autowired
     ShuhoRepository shuhoRepository;
     
-    /**
-     * セッション情報
-     */
-    @Autowired
-    HttpSession session;
     
 	@RequestMapping(value = "/ChangeDone", method = RequestMethod.POST)
-    public String changeDone(Model model,@ModelAttribute Shuho shuho) {
+    public String changeDone(Model model,@ModelAttribute Shuho shuho,HttpSession session) {
 
 		//表示するデータをセット
-		shuho.setUserId("aaaa");
-		shuho.setUserId("aaaa");
-		shuho.setUserId("aaaa");
-		shuho.setUserId("aaaa");
-		shuho.setUserId("aaaa");
-		shuho.setUserId("aaaa");
-		shuho.setUserId("aaaa");
-		
+//		shuho.setUserId("aaaa");
+//		shuho.setUserId("aaaa");
+//		shuho.setUserId("aaaa");
+//		shuho.setUserId("aaaa");
+//		shuho.setUserId("aaaa");
+//		shuho.setUserId("aaaa");
+//		shuho.setUserId("aaaa");
+//		
 		//userId
-		shuho.setUserId(session.getAttribute("loginId").toString());
+//		shuho.setUserId(session.getAttribute("loginId").toString());
 		
 		try {
 			shuhoRepository.save(shuho);
@@ -65,7 +60,7 @@ public class ChangeController {
 			model.addAttribute("shuho", shuho);
 			return "html/update";
 		}
-        return "html/done";
+        return "html/empPage/done";
     }
 
 }

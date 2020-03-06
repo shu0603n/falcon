@@ -1,0 +1,42 @@
+/*ユーザーテーブルの作成*/
+create table sampledb.user (
+user_id varchar(20) PRIMARY KEY,
+password varchar(20),
+emp_no int,
+emp_name varchar(20)
+); 
+
+/*週報テーブルの作成*/
+create table sampledb.shuho (
+shuho_id int PRIMARY KEY AUTO_INCREMENT,
+user_id varchar(20),
+taisho_week varchar(32),
+posted_day varchar(11),
+work_record varchar(2000),
+problem varchar(2000),
+message varchar(2000),
+schedule varchar(2000),
+impression varchar(2000),
+foreign key fk_user_id (user_id) 
+references user(user_id) 
+); 
+
+
+insert into sampledb.user values (000001,'password',00195,'小林逸人');
+insert into sampledb.user values ('murai','password',00194,'村井俊介');
+insert into sampledb.user values ('t','t',90001,'ユーザー１');
+insert into sampledb.user values ('user2','password',90002,'ユーザー２');
+insert into sampledb.user values ('user3','password',90003,'ユーザー３');
+insert into sampledb.user values ('user4','password',90004,'ユーザー４');
+insert into sampledb.user values ('user5','password',90005,'ユーザー５');
+insert into sampledb.user values ('user6','password',90006,'ユーザー６');
+insert into sampledb.user values ('user7','password',90007,'ユーザー７');
+insert into sampledb.user values ('user8','password',90008,'ユーザー８');
+insert into sampledb.user values ('user9','password',90009,'ユーザー９');
+insert into sampledb.user values ('user10','password',90010,'ユーザー１０');
+insert into sampledb.shuho values (NULL,000001,'2020/01/01 ～ 2020/01/05','2020-02-01','作業実績','問題点','連絡事項','次週予定','所感');
+insert into sampledb.shuho values (NULL,000001,'2020/01/01 ～ 2020/01/05','2020-02-01','作業実績','問題点','連絡事項','次週予定','所感');
+insert into sampledb.shuho values (NULL,000001,'2020/01/01 ～ 2020/01/05','2020-02-01','作業実績','問題点','連絡事項','次週予定','所感');
+insert into sampledb.shuho values (NULL,000001,'2020/01/01 ～ 2020/01/05','2020-02-01','作業実績','問題点','連絡事項','次週予定','所感');
+insert into sampledb.shuho values (NULL,000001,'2020/01/01 ～ 2020/01/05','2020-02-01','作業実績','問題点','連絡事項','次週予定','所感');
+

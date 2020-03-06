@@ -46,7 +46,7 @@ public class DeleteController {
 		}catch(Exception e){
 			model.addAttribute("msg","予期せぬエラーが発生しました。");
 			model.addAttribute("shuho", shuho);
-			return "html/list";
+			return "html/myPage/list";
 		}
     }
 

@@ -51,7 +51,7 @@ public class LoginController {
     	} else {
     		//ユーザID、パスワードが正しい場合
     		session.setAttribute("loginId",userData.get().getUserId());
-    		return "html/top";
-    	} 
+    		return "redirect:/Top";
+    	} 	
     }
 }

@@ -34,7 +34,7 @@ public class myListController {
 //		userRepository.getOne();
 //		model.addAttribute("myListslist", myListslist);
 //		System.out.println();
-        return "html/myList";
+        return "html/myPage/myList";
     }
 
 }
