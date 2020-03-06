@@ -31,6 +31,12 @@ public class User {
 	 */
 	@Column(name="password")
 	private String password;
+	
+	/**
+	 * 社員名
+	 */
+	@Column(name="empName")
+	private String empName;
 
 	
 	
@@ -48,5 +54,13 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getEmpName() {
+		return empName;
+	}
+
+	public void setEmpName(String empName) {
+		this.empName = empName;
 	}
 }
