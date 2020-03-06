@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -98,6 +98,9 @@ p a {
 
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
+        <!--<li class="nav-item active">
+          <a class="nav-link" href="#">ダッシュボード <span class="sr-only">(現位置)</span></a>
+        </li>-->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MY週報</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -113,56 +116,76 @@ p a {
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/">ログアウト</a>
+          <a class="nav-link" href="login.html">ログアウト</a>
         </li>
       </ul>
     </div>
   </nav>
 
-  <main role="main" class="col-md-10 offset-md-1 col-lg-10 px-4">
-    <form action="/RegisterDone" method="POST">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <div class="container">
-          <div class="row">
-            <h1 class="col-12 h2" style="white-space:nowrap;">週間報告書</h1>
-            <h1 class="col-12 h5" style="white-space:nowrap;" th:text="${taishoWeek}">2020年 2月25日～2月28日</h1>
+        <main role="main" class="col-md-10 offset-md-1 col-lg-10 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <div class="container">
+              <div class="row">
+                <a class="col-12 h2" style="white-space:nowrap;">週間報告書</h1>
+                <a class="col-12 h5" style="white-space:nowrap;">2020年 2月25日～2月28日</h1>
+              </div>
+            </div>
+            <!--<div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-2">
+                <button type="button" class="btn btn-sm btn-outline-secondary">シェア</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">輸出</button>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                <span data-feather="calendar"></span>
+                今週
+              </button>
+            </div>-->
           </div>
-        </div>
-      </div>
-      <input type="hidden" name="postedDay" th:value="${postedDay}">
-      <input type="hidden" name="taishoWeek" th:value="${taishoWeek}">
 
-      <p th:text="${msg}"></p>
-      <div class="form-group">
-        <div>
-          <label for="textarea1">作業実績</label>
-          <textarea name="workRecord" rows="5" class="form-control"></textarea>
-        </div>
-        <br>
-        <div>
-          <label for="textarea1">問題点</label>
-          <textarea name="problem" rows="5" class="form-control"></textarea>
-        </div>
-        <br>
-        <div>
-          <label for="textarea1">連絡事項・業務外活動・その他</label>
-          <textarea name="message" rows="5" class="form-control"></textarea>
-        </div>
-        <br>
-        <div>
-          <label for="textarea1">次週作業予定</label>
-          <textarea name="schedule" rows="5" class="form-control"></textarea>
-        </div>
-        <br>
-        <div>
-          <label for="textarea1">所感</label>
-          <textarea name="impression" rows="5" class="form-control"></textarea>
-        </div>
-        <br>
-        <input type="submit" class="btn btn-primary container col-4 offset-4" value="登　録">
-      </div><!-- /.table-responsive -->
-    </form>
-  </main>
+          <div class="form-group">
+            <div>
+              <label for="textarea1">今週作業実績</label>
+              <textarea id="textarea1" rows="5" class="form-control" readonly>
+・今週作業内容１
+・今週作業内容２
+・今週作業内容３
+              </textarea>
+            </div>
+            <br>
+            <div>
+              <label for="textarea1">問題点</label>
+              <textarea id="textarea1" rows="5" class="form-control" readonly>
+・問題点１
+・問題点２
+              </textarea>
+            </div>
+            <br>
+            <div>
+              <label for="textarea1">連絡事項・業務外活動・その他</label>
+              <textarea id="textarea1" rows="5" class="form-control" readonly>
+・連絡事項１
+・連絡事項２
+              </textarea>
+            </div>
+            <br>
+            <div>
+              <label for="textarea1">次週作業予定</label>
+              <textarea id="textarea1" rows="5" class="form-control" readonly>
+・次週作業予定１
+・次週作業予定２
+              </textarea>
+            </div>
+            <br>
+            <div>
+              <label for="textarea1">所感</label>
+              <textarea id="textarea1" rows="5" class="form-control" readonly>
+ここに所感を入力していただきたく思いますです。
+              </textarea>
+            </div>
+          </div><!-- /.table-responsive -->
+        </main>
+      </div>
+    </div>
 
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -180,6 +203,38 @@ p a {
       $('.offcanvas-collapse').toggleClass('open')
     })
   })
+  </script>
+
+  <!-- グラフ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+  <script>
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+      labels: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        datasets: [{
+          data: [0, 8.5, 8, 8, 8, 10, 0],
+          lineTension: 0,
+          backgroundColor: 'transparent',
+          borderColor: '#007bff',
+          borderWidth: 4,
+          pointBackgroundColor: '#007bff'
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: false
+            }
+          }]
+        },
+        legend: {
+          display: false,
+        }
+      }
+    });
   </script>
 
 </body>

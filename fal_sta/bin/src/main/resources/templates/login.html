@@ -50,19 +50,14 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.error{
-  color:red;
-  font-weight: bold;
-}
   </style>
 </head>
 
 <body class="text-center">
   <form class="form-signin" action="/" method="post">
-    
+    <p th:text="${msg}"></p>
     <img class="mb-4" src="../images/bootstrap-solid.svg" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">STA</h1>
-    <p class="error" th:text="${msg}"></p>
     <label for="inputEmail" class="sr-only">USER ID</label>
     <input type="text" id="inputEmail" th:value="${userId}" name="userId" class="form-control" placeholder="USER" required autofocus>
     <label for="inputPassword" class="sr-only">パスワード</label>

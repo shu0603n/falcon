@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
 
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +17,7 @@ import javax.persistence.Table;
 public class User {
 
 
-/**
+	/**
     * ユーザーID
     */
     @Id
@@ -38,6 +37,17 @@ public class User {
 	@Column(name="empName")
 	private String empName;
 
+	/**
+	 * 社員番号
+	 */
+	@Column(name="empNo")
+	private Integer empNo;
+	
+	/**
+	 * 社員名
+	 */
+	@Column(name="empName")
+	private String empName;
 	
 	
 	public String getUserId() {
@@ -56,6 +66,17 @@ public class User {
 		this.password = password;
 	}
 	
+<<<<<<< HEAD
+=======
+	public Integer getEmpNo() {
+		return empNo;
+	}
+
+	public void setEmpNo(Integer empNo) {
+		this.empNo = empNo;
+	}
+	
+>>>>>>> branch 'master' of https://github.com/shu0603n/falcon.git
 	public String getEmpName() {
 		return empName;
 	}
