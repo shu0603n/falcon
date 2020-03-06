@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class User {
 
 
-/**
+	/**
     * ユーザーID
     */
     @Id
@@ -32,6 +32,17 @@ public class User {
 	@Column(name="password")
 	private String password;
 
+	/**
+	 * 社員番号
+	 */
+	@Column(name="epmNo")
+	private Integer empNo;
+	
+	/**
+	 * 社員名
+	 */
+	@Column(name="empName")
+	private String empName;
 	
 	
 	public String getUserId() {
@@ -48,5 +59,21 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public Integer getEmpNo() {
+		return empNo;
+	}
+
+	public void setEmpNo(Integer empNo) {
+		this.empNo = empNo;
+	}
+	
+	public String getEmpName() {
+		return empName;
+	}
+
+	public void setEmpName(String empName) {
+		this.empName = empName;
 	}
 }
