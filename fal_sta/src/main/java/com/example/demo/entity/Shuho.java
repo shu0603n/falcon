@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,39 +12,75 @@ import javax.persistence.Table;
 
 
 /**
- * ユーザー情報 Entity
+ * 週報情報 Entity
  */
 @Entity
-@Table(name="user")
+@Table(name="shuho")
 public class Shuho {
 
-
+	/**
+    * 週報ID
+    */
+    @Id
+    @Column(name="shuhoId")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer shuhoId;
+	
 	/**
     * ユーザーID
     */
-    @Id
     @Column(name="userId")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String userId;
 
 	/**
-	 * パスワード
+	 * 対象週
 	 */
-	@Column(name="password")
-	private String password;
+	@Column(name="taishoWeek ")
+	private String taishoWeek ;
 
 	/**
-	 * パスワード
+	 * 投稿日
 	 */
-	@Column(name="epmNo")
-	private Integer empNo;
+	@Column(name="postedDay")
+	private String postedDay;
 	
 	/**
-	 * パスワード
+	 * 作業実績
 	 */
-	@Column(name="empName")
-	private String empName;
+	@Column(name="workRecord")
+	private String workRecord;
 	
+	/**
+	 * 問題点
+	 */
+	@Column(name="problem")
+	private String problem;
+	
+	/**
+	 * 連絡事項
+	 */
+	@Column(name="message")
+	private String message;
+	
+	/**
+	 * 次週予定
+	 */
+	@Column(name="schedule")
+	private String schedule;
+	
+	/**
+	 * 所感
+	 */
+	@Column(name="impression")
+	private String impression;
+	
+	public Integer getShuhoId() {
+		return shuhoId;
+	}
+
+	public void setShuhoId(Integer shuhoId) {
+		this.shuhoId = shuhoId;
+	}
 	
 	public String getUserId() {
 		return userId;
@@ -52,27 +90,59 @@ public class Shuho {
 		this.userId = userId;
 	}
 	
-	public String getPassword() {
-		return password;
+	public String getTaishoWeek () {
+		return taishoWeek ;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setTaishoWeek (String taishoWeek ) {
+		this.taishoWeek  = taishoWeek ;
 	}
 	
-	public Integer getEmpNo() {
-		return empNo;
+	public String getPostedDay() {
+		return postedDay;
 	}
 
-	public void setEmpNo(Integer empNo) {
-		this.empNo = empNo;
+	public void setPostedDay(String postedDay) {
+		this.postedDay = postedDay;
 	}
 	
-	public String getEmpName() {
-		return empName;
+	public String getWorkRecord() {
+		return workRecord;
 	}
 
-	public void setEmpName(String empName) {
-		this.empName = empName;
+	public void setWorkRecord(String workRecord) {
+		this.workRecord = workRecord;
+	}
+	
+	public String getProblem() {
+		return problem;
+	}
+
+	public void setProblem(String problem) {
+		this.problem = problem;
+	}
+	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
+	public String getSchedule() {
+		return schedule;
+	}
+
+	public void setSchedule(String schedule) {
+		this.schedule = schedule;
+	}
+	
+	public String getImpression() {
+		return impression;
+	}
+
+	public void setImpression(String impression) {
+		this.impression = impression;
 	}
 }

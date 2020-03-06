@@ -85,6 +85,9 @@ p a {
   color: gray;
   text-decoration: none;
 }
+h2{
+  text-align:center;
+}
 </style>
 </head>
 
@@ -120,47 +123,11 @@ p a {
   </nav>
 
   <main role="main" class="col-md-10 offset-md-1 col-lg-10 px-4">
-    <form action="/RegisterDone" method="POST">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <div class="container">
-          <div class="row">
-            <h1 class="col-12 h2" style="white-space:nowrap;">週間報告書</h1>
-            <h1 class="col-12 h5" style="white-space:nowrap;" th:text="${taishoWeek}">2020年 2月25日～2月28日</h1>
-          </div>
-        </div>
-      </div>
-      <input type="hidden" name="postedDay" th:value="${postedDay}">
-      <input type="hidden" name="taishoWeek" th:value="${taishoWeek}">
-
-      <p th:text="${msg}"></p>
-      <div class="form-group">
-        <div>
-          <label for="textarea1">作業実績</label>
-          <textarea name="workRecord" rows="5" class="form-control"></textarea>
-        </div>
-        <br>
-        <div>
-          <label for="textarea1">問題点</label>
-          <textarea name="problem" rows="5" class="form-control"></textarea>
-        </div>
-        <br>
-        <div>
-          <label for="textarea1">連絡事項・業務外活動・その他</label>
-          <textarea name="message" rows="5" class="form-control"></textarea>
-        </div>
-        <br>
-        <div>
-          <label for="textarea1">次週作業予定</label>
-          <textarea name="schedule" rows="5" class="form-control"></textarea>
-        </div>
-        <br>
-        <div>
-          <label for="textarea1">所感</label>
-          <textarea name="impression" rows="5" class="form-control"></textarea>
-        </div>
-        <br>
-        <input type="submit" class="btn btn-primary container col-4 offset-4" value="登　録">
-      </div><!-- /.table-responsive -->
+    <form action="/top" method="GET">
+      <br>
+      <h2 th:text="${msg}"></h2>
+      <br>
+      <input type="submit" class="btn btn-primary container col-4 offset-4" value="T O P に 戻 る">
     </form>
   </main>
 

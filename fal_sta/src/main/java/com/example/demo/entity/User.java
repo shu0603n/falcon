@@ -34,7 +34,7 @@ public class User {
 	/**
 	 * 社員番号
 	 */
-	@Column(name="epmNo")
+	@Column(name="empNo")
 	private Integer empNo;
 	
 	/**
