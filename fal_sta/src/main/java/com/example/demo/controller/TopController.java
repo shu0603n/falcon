@@ -24,10 +24,8 @@ public class TopController {
     @Autowired
     ShuhoRepository shuhoRepository;
     
-    @Autowired
-    HttpSession session;
     @RequestMapping(value = "/Top", method = RequestMethod.GET)
-    public String top(Model model) {
+    public String top(Model model,HttpSession session) {
     	List<Shuho> shuholist = shuhoRepository.findAll();
     	
     	model.addAttribute("shuholist", shuholist);

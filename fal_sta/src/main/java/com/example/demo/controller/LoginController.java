@@ -19,7 +19,11 @@ import com.example.demo.repository.UserRepository;
 @Controller
 public class LoginController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String login(Model model) {
+    public String login(Model model,HttpSession session) {
+//    	if(!"".equals(session.getAttribute("loginId").toString())) {
+//    		return "top";
+//    	}
+
         model.addAttribute("msg", "");
         return "login";
     }
@@ -53,5 +57,11 @@ public class LoginController {
     		session.setAttribute("loginId",userData.get().getUserId());
     		return "redirect:/Top";
     	} 	
+    }
+    
+    @RequestMapping(value = "/Logout", method = RequestMethod.GET)
+    public String logout(Model model,HttpSession session) {
+        session.removeAttribute("loginId");
+        return "foword:/";
     }
 }

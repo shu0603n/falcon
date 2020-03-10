@@ -27,7 +27,7 @@ public class RegisterController {
 
 		//現在時刻取（形式：2018-02-11T13:02:49.957）
 		LocalDate now = LocalDate.now();
-		//変換（形式：2018-02-11）
+		//現在時刻取（形式：2018-02-11）
 		DateTimeFormatter dtformat1 = 
 				DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String toDay = dtformat1.format(now);
@@ -70,7 +70,6 @@ public class RegisterController {
     public String registerDone(Model model,@ModelAttribute Shuho shuho,HttpSession session) {
 
 		//週報のデータを入れる
-//		shuho.setShuhoId(0);
 		User user = new User();
 		user.setUserId(session.getAttribute("loginId").toString());
 		shuho.setUser(user);
