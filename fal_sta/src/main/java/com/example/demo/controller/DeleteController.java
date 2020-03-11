@@ -24,29 +24,24 @@ public class DeleteController {
     @Autowired
     ShuhoRepository shuhoRepository;
     
-    /**
-     * セッション情報
-     */
-    @Autowired
-    HttpSession session;
-    
-	@RequestMapping(value = "/DeleteDone", method = RequestMethod.POST)
-    public String changeDone(Model model,@RequestParam("shuhoId") Integer shuhoId) {
+	@RequestMapping(value = "/Delete{id}", method = RequestMethod.GET)
+    public String changeDone(Model model,@ModelAttribute Shuho shuho) {
 
-		Optional<Shuho> shuho = shuhoRepository.findById(shuhoId);
-		if(shuho.isEmpty()) {
+		Optional<Shuho> shuhoData = shuhoRepository.findById(shuho.getShuhoId());
+		if(shuhoData.isEmpty()) {
 			model.addAttribute("msg","既にデータが削除されています。");
-			model.addAttribute("shuho", shuho);
-			return "html/list";
+			model.addAttribute("shuhoData", shuhoData);
+			return "html/myPage/myList";
 		}
 		
 		try {
-			shuhoRepository.deleteById(shuhoId);
-			 return "html/done";
+			shuhoRepository.deleteById(shuho.getShuhoId());
+			model.addAttribute("msg","データを削除しました。");
+			 return "html/myPage/done";
 		}catch(Exception e){
 			model.addAttribute("msg","予期せぬエラーが発生しました。");
-			model.addAttribute("shuho", shuho);
-			return "html/myPage/list";
+			model.addAttribute("shuho", shuhoData);
+			return "html/myPage/myList";
 		}
     }
 
