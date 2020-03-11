@@ -100,9 +100,6 @@ p a {
 
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
-        <!--<li class="nav-item active">
-          <a class="nav-link" href="#">ダッシュボード <span class="sr-only">(現位置)</span></a>
-        </li>-->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MY週報</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -149,7 +146,7 @@ p a {
 					<div th:each="user : ${searchNamelist}" class="media text-muted pt-1" th:object="${user}">
 						<svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#e83e8c" width="100%" height="100%" /><text fill="#e83e8c" dy=".3em" x="50%" y="50%">32x32</text></svg>
 						<p class="media-body pb-2 mt-2 small lh-125 border-bottom border-gray">
-						<a th:text="*{empName}" href="javascript:form1.submit()" class="d-block text-gray-dark"></a>
+						<a th:text="*{empName}" th:href="@{/SearchNameWeek(userId=${user.userId})}" class="d-block text-gray-dark"></a>
 					</div>
 				</form>
 			</div>

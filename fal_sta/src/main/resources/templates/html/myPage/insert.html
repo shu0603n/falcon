@@ -90,7 +90,7 @@ p a {
 
 <body class="bg-light">
   <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-    <a class="navbar-brand mr-auto mr-lg-0" href="top.html">TOP</a>
+    <a class="navbar-brand mr-auto mr-lg-0" href="/Top">TOP</a>
     <p th:text="${userId}"></p>
     <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
       <span class="navbar-toggler-icon"></span>
@@ -125,7 +125,13 @@ p a {
         <div class="container">
           <div class="row">
             <h1 class="col-12 h2" style="white-space:nowrap;">週間報告書</h1>
-            <h1 class="col-12 h5" style="white-space:nowrap;" th:text="${taishoWeek}">2020年 2月25日～2月28日</h1>
+            <!-- <h1 class="col-12 h5" style="white-space:nowrap;" th:text="${taishoWeek}">2020年 2月25日～2月28日</h1> -->
+            <h1 class="col-12 h5" style="white-space:nowrap;">
+			  <select class="col-12 h5" style="white-space:nowrap;">
+			    <option th:each="date : ${week}" th:value="${date}">
+			  </select>
+			</h1>
+            
           </div>
         </div>
       </div>
