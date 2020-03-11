@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>新規登録</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <style>
+  html,
+body {
+  overflow-x: hidden; /* 狭いデバイスでのスクロールを防止 */
+}
+
+body {
+  padding-top: 56px;
+}
+
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 56px; /* ナビバーの高さ */
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    background-color: #343a40;
+    transition: visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
+  }
+  .offcanvas-collapse.open {
+    visibility: visible;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  color: rgba(255, 255, 255, .75);
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-underline .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
+  color: #6c757d;
+}
+
+.nav-underline .nav-link:hover {
+  color: #007bff;
+}
+
+.nav-underline .active {
+  font-weight: 500;
+  color: #343a40;
+}
+
+.text-white-50 { color: rgba(255, 255, 255, .5); }
+
+.bg-purple { background-color: #6f42c1; }
+
+.lh-100 { line-height: 1; }
+.lh-125 { line-height: 1.25; }
+.lh-150 { line-height: 1.5; }
+p a {
+  color: gray;
+  text-decoration: none;
+}
+</style>
+</head>
+
+<body class="bg-light">
+  <!-- メニューバー読み込み -->
+  <nav th:include="html/common/menuBar" class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark"></nav>
+
+  <main role="main" class="col-md-10 offset-md-1 col-lg-10 px-4">
+  <form action="/UserMyChangeDone" method="POST">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+      <div class="container">
+        <div class="row">
+          <h1 class="col-12 h2" style="white-space:nowrap;">ユーザー情報詳細</h1>
+          <p th:text="${msg}"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+    
+      <table class="table">
+        <tr>
+          <th><label for="textarea1">ユーザーID</label></th>
+          <td th:text="${user.userId}">
+            <input type="hidden" name="userId" th:value="${user.userId}">
+          </td>
+        </tr>
+        
+        <tr>
+          <th><label for="textarea1">パスワード</label></th>
+          <td><input type="password" name="password" th:value="${user.password}"></td>
+        </tr>
+        
+        <tr>
+          <th><label for="textarea1">氏名</label></th>
+          <td><input type="text" name="empName" th:value="${user.empName}"></td>
+        </tr>
+        
+        <tr>
+          <th><label for="textarea1">社員番号</label></th>
+          <td><input type="text" name="empNo" th:value="${user.empNo}"></td>
+        </tr>
+        
+        <tr>
+          <th><label for="textarea1">役職</label></th>
+          <td>
+            <select name="">
+              <option value="0">一般
+              <option value="1">管理者
+            </select>
+          </td>
+        </tr>
+
+      </table>
+
+		↓横にしたいのに横にならない助けて
+        <a href="/UserList" class="btn btn-primary col-4 offset-4">戻　る</a>
+        <input type="submit" class="btn btn-primary col-4 offset-4" value="更　新">
+        <a th:href="@{/UserDelete(userId=${user.userId})}" class="btn btn-danger col-4 offset-4">削　除</a>
+    </div>
+    
+    </form>
+  </main>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+  <!-- アイコン -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+  <script>
+    feather.replace()
+  </script>
+  <script>
+  $(function () {
+    'use strict'
+
+    $('[data-toggle="offcanvas"]').on('click', function () {
+      $('.offcanvas-collapse').toggleClass('open')
+    })
+  })
+  </script>
+
+</body>
+
+</html>
