@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -46,7 +47,7 @@ public class ChangeController {
     		return "html/myPage/myList";
     	}
     	
-		List<Shuho> shuholist = shuhoRepository.findByUser(user.get());
+		List<Shuho> shuholist = shuhoRepository.findByUserOrderByPostedDayDesc(user.get());
 		
 		//nullの場合
     	if(shuholist.isEmpty()) {
@@ -70,12 +71,37 @@ public class ChangeController {
     }
 	
 	
+	@RequestMapping(value = "/Change", method = RequestMethod.GET)
+    public String change2(Model model,@ModelAttribute Shuho shuho,HttpSession session) {
+		
+		//現在時刻取（形式：2018-02-11T13:02:49.957）
+		LocalDate now = LocalDate.now();
+	    // 現在日の週の月曜日を取得
+	    LocalDate monday = now.with(DayOfWeek.MONDAY);
+	    // 現在日の週の金曜日を取得
+	    LocalDate friday = now.with(DayOfWeek.FRIDAY);
+	    //対象
+	    String taisyo = monday + " ～ " + friday;
+	    if(!(monday.isAfter(now) || friday.isBefore(now))) {
+			taisyo = monday.minusDays(7) + " ～ " + friday.minusDays(7);
+		}
+	            
+	    User user = new User();
+	    user.setUserId(session.getAttribute("loginId").toString());
+	    List<Shuho> shuholist = shuhoRepository.findByUserAndTaishoWeek(user,taisyo.replace("-", "/"));
+	    Shuho shuhoData = shuholist.get(0);
+
+        model.addAttribute("shuhoData", shuhoData);
+
+        return "html/myPage/update";
+    }
+	
+	
     
     
 	@RequestMapping(value = "/ChangeDone", method = RequestMethod.POST)
     public String changeDone(Model model,@ModelAttribute Shuho shuho,HttpSession session) {
 
-//		User user = userRepository.getOne(session.getAttribute("loginId").toString());
 		User user = new User();
 		user.setUserId(session.getAttribute("loginId").toString());
 		

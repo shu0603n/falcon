@@ -16,4 +16,10 @@ public interface ShuhoRepository extends JpaRepository<Shuho, Integer> {
 
 	List<Shuho> findByUser(User user);
 
+	List<Shuho> findAllByOrderByPostedDayDesc();
+
+	List<Shuho> findByUserAndTaishoWeek(User user, String taisyo);
+
+	List<Shuho> findByUserOrderByPostedDayDesc(User user);
+
 }

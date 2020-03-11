@@ -125,7 +125,13 @@ p a {
         <div class="container">
           <div class="row">
             <h1 class="col-12 h2" style="white-space:nowrap;">週間報告書</h1>
-            <h1 class="col-12 h5" style="white-space:nowrap;" th:text="${taishoWeek}">2020年 2月25日～2月28日</h1>
+            <!-- <h1 class="col-12 h5" style="white-space:nowrap;" th:text="${taishoWeek}">2020年 2月25日～2月28日</h1> -->
+            <h1 class="col-12 h5" style="white-space:nowrap;">
+			  <select class="col-12 h5" style="white-space:nowrap;">
+			    <option th:each="date : ${week}" th:value="${date}">
+			  </select>
+			</h1>
+            
           </div>
         </div>
       </div>

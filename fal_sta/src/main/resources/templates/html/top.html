@@ -135,16 +135,15 @@ p a {
             </div>
           </div>
           </div>
-          <div class="col-4 d-flex align-items-center">
-            <a class="btn btn-primary container" style="height:1000px weight:1000px" href="/Register">新規登録</a>
+          <div class="col-4 d-flex align-items-center" th:if="${flag}">
+            <a class="btn btn-primary container" style="height:1000px weight:1000px" href="/Register">週報を書く</a>
+          </div>
+          <div class="col-4 d-flex align-items-center" th:if="${!flag}">
+            <a class="btn btn-primary container" style="height:1000px weight:1000px" href="/Change">週報を更新</a>
           </div>
         </div>
       </div>
     </div>
-
-
-
-
 
     <div class="my-3 p-3 bg-white rounded shadow-sm">
       <h6 class="border-bottom border-gray pb-2 mb-0">新着一覧</h6>
