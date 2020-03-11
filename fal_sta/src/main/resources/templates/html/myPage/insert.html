@@ -128,7 +128,7 @@ p a {
             <!-- <h1 class="col-12 h5" style="white-space:nowrap;" th:text="${taishoWeek}">2020年 2月25日～2月28日</h1> -->
             <h1 class="col-12 h5" style="white-space:nowrap;">
 			  <select class="col-12 h5" style="white-space:nowrap;">
-			    <option th:each="date : ${week}" th:value="${date}">
+			    <option th:each="date : ${week}" th:value="${date.Value}">
 			  </select>
 			</h1>
             
