@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TOP</title>
+  <title>新規登録</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
   <style>
   html,
 body {
@@ -86,57 +85,76 @@ p a {
   color: gray;
   text-decoration: none;
 }
-  </style>
-
+</style>
 </head>
 
 <body class="bg-light">
   <!-- メニューバー読み込み -->
   <nav th:include="html/common/menuBar" class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark"></nav>
 
-  <main role="main" class="container">
-    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+  <main role="main" class="col-md-10 offset-md-1 col-lg-10 px-4">
+  <form action="/UserRegisterDone" method="POST">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
       <div class="container">
         <div class="row">
-          <div class="col-8 offset-">
-            <div class="row">
-              <div class="col-2">
-              <img class="mr-3" src="無題.png" alt="" width="48" height="48">
-            </div>
-            <div class="lh-100 col-10">
-              <h1 class="h1 mb-0 text-white lh-100">STA</h1>
-              <small>Syuuhou Toukou Application</small>
-            </div>
-          </div>
-          </div>
+          <h1 class="col-12 h2" style="white-space:nowrap;">ユーザー新規登録</h1>
+          <p th:text="${msg}"></p>
         </div>
       </div>
     </div>
 
-    <div class="my-3 p-3 bg-white rounded shadow-sm">
-      <h6 class="border-bottom border-gray pb-2 mb-0">syuuseigamenn</h6>
-      <p th:text="${msg}"></p>
-      
-      <div th:each="shuho : ${shuholist}" th:object="${shuho}" class="media text-muted pt-3">
-        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#007bff" width="100%" height="100%" /><text fill="#007bff" dy=".3em" x="50%" y="50%">32x32</text></svg>
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <a th:href="@{/Change(shuhoId=${shuho.shuhoId})}" class="d-block text-gray-dark" th:text="${shuho.taishoWeek}"></a>
-        </p>
-          <a class="btn btn-danger" th:href="@{/Delete(shuhoId=${shuho.shuhoId})}">削除</a>
-      </div>
+    <div class="form-group">
+    
+      <table class="table">
+        <tr>
+          <th><label for="textarea1">ユーザーID</label></th>
+          <td><input type="text" name="userId" th:value="${user.userId}"></td>
+        </tr>
+        
+        <tr>
+          <th><label for="textarea1">パスワード</label></th>
+          <td><input type="password" name="password" th:value="${user.password}"></td>
+        </tr>
+        
+        <tr>
+          <th><label for="textarea1">氏名</label></th>
+          <td><input type="text" name="empName" th:value="${user.empName}"></td>
+        </tr>
+        
+        <tr>
+          <th><label for="textarea1">社員番号</label></th>
+          <td><input type="text" name="empNo" th:value="${user.empNo}"></td>
+        </tr>
+        
+        <tr>
+          <th><label for="textarea1">役職</label></th>
+          <td>
+            <select name="">
+              <option value="0">一般
+              <option value="1">管理者
+            </select>
+          </td>
+        </tr>
 
-      
-      
-      <small class="d-block text-right mt-3">
-        <a href="#">すべてを表示</a>
-      </small>
+      </table>
+
+		↓横にしたいのに横にならない助けて
+        <a href="/UserList" class="btn btn-primary col-4 offset-4">戻　る</a>
+        <input type="submit" class="btn btn-primary col-4 offset-4" value="更　新">
+        <a th:href="@{/UserDelete(userId=${user.userId})}" class="btn btn-danger col-4 offset-4">削　除</a>
     </div>
-
+    
+    </form>
   </main>
 
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+  <!-- アイコン -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+  <script>
+    feather.replace()
+  </script>
   <script>
   $(function () {
     'use strict'
@@ -146,6 +164,7 @@ p a {
     })
   })
   </script>
+
 </body>
 
 </html>
