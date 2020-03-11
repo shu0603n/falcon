@@ -2,10 +2,7 @@ package com.example.demo.controller;
 
 
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.demo.entity.Shuho;
 import com.example.demo.entity.User;
 import com.example.demo.repository.ShuhoRepository;
 import com.example.demo.repository.UserRepository;
@@ -123,6 +119,31 @@ public class UserController {
 			return "html/userPage/userInsertView";
 		}
 		model.addAttribute("msg","登録が完了しました。");
+        return "html/myPage/done";
+    }
+	
+	@RequestMapping(value = "/UserMyView", method = RequestMethod.GET)
+    public String userMyView(Model model,HttpSession session) {
+		Optional<User> UserData = userRepository.findById(session.getAttribute("loginId").toString());
+
+        model.addAttribute("user", UserData.get());
+
+        return "html/userPage/userMyView";
+    }
+	
+    
+	@RequestMapping(value = "/UserMyChangeDone", method = RequestMethod.POST)
+    public String userMyChangeDone(Model model,@ModelAttribute User user,HttpSession session) {
+
+		try {
+			userRepository.save(user);
+		}catch(Exception e){
+			model.addAttribute("msg","入力項目に誤りがあります");
+			model.addAttribute("user", user);
+			e.printStackTrace();
+			return "html/userPage/userMyView";
+		}
+		model.addAttribute("msg","更新が完了しました");
         return "html/myPage/done";
     }
 
