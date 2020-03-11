@@ -18,11 +18,8 @@ import com.example.demo.repository.ShuhoRepository;
 import com.example.demo.repository.UserRepository;
 
 
-
-
-
 @Controller
-public class SearchNameWeekController {
+public class SearchController {
 	
 	/**
      * ユーザー情報 Repository
@@ -33,7 +30,46 @@ public class SearchNameWeekController {
     @Autowired
     ShuhoRepository shuhoRepository;
 
+    
     /**
+     * ユーザーが投稿した週報の一覧画面を表示
+     * @param model Model
+     * @return 週報情報一覧画面のHTML
+     */
+	@RequestMapping(value = "/SearchWeek", method = RequestMethod.GET)
+    public String searchDay(Model model) {
+		List<Shuho> searchWeek = shuhoRepository.findAllGropuByTaishoWeek();
+		model.addAttribute("searchWeeklist", searchWeek);
+
+        return "html/empPage/listWeek";
+    }
+	
+    /**
+     * ユーザーが投稿した週報の一覧画面を表示
+     * @param model Model
+     * @return 週報情報一覧画面のHTML
+     */
+	@RequestMapping(value = "/SearchWeekName{taishoWeek}", method = RequestMethod.GET)
+    public String displayList(Model model, @ModelAttribute Shuho shuho) {
+		List<Shuho> shuholist = shuhoRepository.findByTaishoWeek(shuho.getTaishoWeek());
+		model.addAttribute("taishoWeek", shuho.getTaishoWeek());
+		model.addAttribute("shuholist", shuholist);
+        return "html/empPage/listWeekName";
+    }
+	
+	/**
+     * ユーザーが投稿した週報の一覧画面を表示
+     * @param model Model
+     * @return 週報情報一覧画面のHTML
+     */
+	@RequestMapping(value = "/SearchName", method = RequestMethod.GET)
+    public String displayList(Model model) {
+		List<User> searchNamelist = userRepository.findAll();
+		model.addAttribute("searchNamelist", searchNamelist);
+        return "html/empPage/listName";
+    }
+	
+	/**
      * ユーザーが投稿した週報の一覧画面を表示
      * @param model Model
      * @return 週報情報一覧画面のHTML

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -135,7 +135,7 @@ p a {
             </div>
             <div class="lh-100 col-10">
               <h1 class="h1 mb-0 text-white lh-100">STA</h1>
-              <small>Syuuhou Toukou Application</small>
+              <small>Shuuhou Toukou Application</small>
             </div>
           </div>
           </div>
@@ -145,42 +145,11 @@ p a {
 
     <div class="my-3 p-3 bg-white rounded shadow-sm">
       <h6 class="border-bottom border-gray pb-2 mb-0">日付別　週報一覧</h6>
-      <div class="media text-muted pt-3">
-        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#007bff" width="100%" height="100%" /><text fill="#007bff" dy=".3em" x="50%" y="50%">32x32</text></svg>
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <a href="list_week2.html" class="d-block text-gray-dark">2020年 2月25日～2月28日</a>
-        </p>
-      </div>
-      <div class="media text-muted pt-3">
-        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#e83e8c" width="100%" height="100%" /><text fill="#e83e8c" dy=".3em" x="50%" y="50%">32x32</text></svg>
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <a href="list_week2.html" class="d-block text-gray-dark">2020年 2月1日～2月5日</a>
-        </p>
-      </div>
-      <div class="media text-muted pt-3">
-        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#6f42c1" width="100%" height="100%" /><text fill="#6f42c1" dy=".3em" x="50%" y="50%">32x32</text></svg>
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <a href="list_week2.html" class="d-block text-gray-dark">2020年 1月22日～2月26日</a>
-        </p>
-      </div>
-      <div class="media text-muted pt-3">
-        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#6f42c1" width="100%" height="100%" /><text fill="#6f42c1" dy=".3em" x="50%" y="50%">32x32</text></svg>
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <a href="list_week2.html" class="d-block text-gray-dark">2020年 1月15日～1月19日</a>
-        </p>
-      </div>
-      <div class="media text-muted pt-3">
-        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#6f42c1" width="100%" height="100%" /><text fill="#6f42c1" dy=".3em" x="50%" y="50%">32x32</text></svg>
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <a href="list_week2.html" class="d-block text-gray-dark">2020年 1月8日～2月12日</a>
-        </p>
-      </div>
-      <div class="media text-muted pt-3">
-        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#6f42c1" width="100%" height="100%" /><text fill="#6f42c1" dy=".3em" x="50%" y="50%">32x32</text></svg>
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <a href="list_week2.html" class="d-block text-gray-dark">2020年 1月1日～1月5日</a>
-        </p>
-      </div>
+      <div th:each="shuho : ${searchWeeklist}" class="media text-muted pt-1" th:object="${shuho}">
+			<svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#e83e8c" width="100%" height="100%" /><text fill="#e83e8c" dy=".3em" x="50%" y="50%">32x32</text></svg>
+			<p class="media-body pb-2 mt-2 small lh-125 border-bottom border-gray">
+			<a th:text="*{taishoWeek}" th:href="@{/SearchWeekName(taishoWeek=${shuho.taishoWeek})}" class="d-block text-gray-dark"></a>
+	  </div>
       <small class="d-block text-right mt-3">
         <a href="#">すべてを表示</a>
       </small>

@@ -89,36 +89,8 @@ p a {
 </head>
 
 <body class="bg-light">
-  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-    <a class="navbar-brand mr-auto mr-lg-0" href="top.html">TOP</a>
-    <p th:text="${userId}"></p>
-    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MY週報</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="/Register">新規登録</a>
-            <a class="dropdown-item" href="/MyList">投稿履歴</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">週報一覧</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="/SearchDay">日付別</a>
-            <a class="dropdown-item" href="/SearchName">名前別</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/">ログアウト</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <!-- メニューバー読み込み -->
+  <nav th:include="html/common/menuBar" class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark"></nav>
 
         <main role="main" class="col-md-10 offset-md-1 col-lg-10 px-4">
         <form action="/ChangeDone" method="POST">
